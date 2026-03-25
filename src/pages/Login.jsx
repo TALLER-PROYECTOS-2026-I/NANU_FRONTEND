@@ -32,6 +32,7 @@ export default function Login() {
       const users = await res.json();
 
       // 🔍 validar usuario
+      // 🔍 validar 
       const userFound = users.find(
         (u) =>
           u.email === form.email && u.password === form.password
