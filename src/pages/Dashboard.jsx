@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import {
   BarChart,
@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import { getCamiones } from "../api/api";
 import "./Dashboard.css";
 
 const kmData = [
@@ -37,6 +38,15 @@ const menuItems = [
 
 function Dashboard() {
   const navigate = useNavigate();
+  const [camiones, setCamiones] = useState([]);
+
+  useEffect(() => {
+    getCamiones()
+      .then((res) => setCamiones(res.data || []))
+      .catch((err) => console.error("Error cargando camiones:", err));
+  }, []);
+
+  const camionesActivos = camiones.filter((c) => c.estado === "activo");
 
   const handleLogout = () => {
     navigate("/");
@@ -81,14 +91,14 @@ function Dashboard() {
             <div className="kpi-icon kpi-icon--blue">🚛</div>
             <div className="kpi-info">
               <span className="kpi-label">Camiones Activos</span>
-              <span className="kpi-value">12</span>
+              <span className="kpi-value">{camionesActivos.length}</span>
             </div>
           </div>
           <div className="kpi-card">
             <div className="kpi-icon kpi-icon--green">👥</div>
             <div className="kpi-info">
               <span className="kpi-label">Conductores Activos</span>
-              <span className="kpi-value">12</span>
+              <span className="kpi-value">{camiones.length}</span>
             </div>
           </div>
           <div className="kpi-card">
