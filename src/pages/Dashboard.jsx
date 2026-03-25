@@ -31,7 +31,6 @@ const productividadData = [
 
 const menuItems = [
   { label: "Dashboard", path: "/dashboard", icon: "📊" },
-  { label: "DayRecord", path: "/dayrecord", icon: "📋" },
   { label: "Camiones", path: "/dashboard", icon: "🚛" },
   { label: "Contratos", path: "/dashboard", icon: "📄" },
   { label: "GPS", path: "/dashboard", icon: "📍" },
