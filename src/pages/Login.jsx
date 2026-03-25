@@ -24,33 +24,38 @@ export default function Login() {
     setError("");
 
     try {
-      // 🔥 llamada a tu API
+      // 🔥 LOGIN REAL
       const res = await fetch(
-        "https://ujp4asesoj.execute-api.us-east-2.amazonaws.com/Prod/items"
+        "https://ujp4asesoj.execute-api.us-east-2.amazonaws.com/Prod/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: form.email,
+            password: form.password,
+          }),
+        }
       );
 
-      const users = await res.json();
+      const data = await res.json();
 
-      // 🔍 validar usuario
-      const userFound = users.find(
-        (u) =>
-          u.email === form.email && u.password === form.password
-      );
-
-      if (!userFound) {
-        setError("Credenciales incorrectas ❌");
+      // 🔍 validación backend
+      if (!res.ok) {
+        setError(data.message || "Credenciales incorrectas ❌");
         return;
       }
 
-      // ✅ login correcto
-      localStorage.setItem("user", JSON.stringify(userFound));
+      // ✅ guardar sesión (token o usuario)
+      localStorage.setItem("user", JSON.stringify(data));
 
       // 🚀 redirección
       navigate("/dashboard");
 
     } catch (err) {
       console.error(err);
-      setError("Error al conectar con el servidor");
+      setError("Error de conexión con el servidor");
     }
   };
 
@@ -82,7 +87,6 @@ export default function Login() {
           <button type="submit">Iniciar Sesión</button>
         </form>
 
-        {/* 🔴 error */}
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         <a href="#" className="forgot">
