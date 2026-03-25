@@ -26,7 +26,7 @@ export default function Login() {
     try {
       // 🔥 llamada a tu API
       const res = await fetch(
-        "https://ujp4asesoj.execute-api.us-east-2.amazonaws.com/Prod/items"
+        "https://ujp4asesoj.execute-api.us-east-2.amazonaws.com/Prod/login"
       );
 
       const users = await res.json();
