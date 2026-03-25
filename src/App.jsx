@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import DayRecord from "./pages/DayRecord";
+import Contratos from "./pages/Contratos";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dayrecord" element={<DayRecord />} />
+        <Route path="/contratos" element={<Contratos />} />
       </Routes>
     </BrowserRouter>
   );

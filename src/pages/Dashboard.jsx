@@ -32,9 +32,9 @@ const productividadData = [
 const menuItems = [
   { label: "Dashboard", path: "/dashboard", icon: "📊" },
   { label: "DayRecord", path: "/dayrecord", icon: "📋" },
-  { label: "Camiones", path: "/dashboard", icon: "🚛" },
-  { label: "Contratos", path: "/dashboard", icon: "📄" },
-  { label: "GPS", path: "/dashboard", icon: "📍" },
+  { label: "Camiones", path: "/camiones", icon: "🚛" },
+  { label: "Contratos", path: "/contratos", icon: "📄" },
+  { label: "GPS", path: "/gps", icon: "📍" },
 ];
 
 function Dashboard() {
@@ -67,9 +67,7 @@ function Dashboard() {
             <NavLink
               key={item.label}
               to={item.path}
-              className={({ isActive }) =>
-                `sidebar-link ${item.label === "Dashboard" ? "active" : ""}`
-              }
+              className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}
             >
               <span className="sidebar-icon">{item.icon}</span>
               {item.label}
