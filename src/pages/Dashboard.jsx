@@ -34,6 +34,7 @@ const menuItems = [
   { label: "Camiones", path: "/dashboard", icon: "🚛" },
   { label: "Contratos", path: "/dashboard", icon: "📄" },
   { label: "GPS", path: "/dashboard", icon: "📍" },
+    { label: "Registro Jornadas", path: "/RegistroNuevaJornada", icon: "🕒" }, // 🔥 NUEVO
 ];
 
 function Dashboard() {
